@@ -2,6 +2,7 @@ package com.msr.nbmusic.factory;
 
 
 import com.msr.nbmusic.BuildConfig;
+import com.msr.nbmusic.api.interceptor.ShowApiCommonParamsInterceptor;
 import com.msr.nbmusic.app.NBApplication;
 import com.msr.nbmusic.utils.FileUtils;
 import com.google.gson.Gson;
@@ -21,26 +22,27 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by _SOLID
- * Date:2016/7/27
- * Time:15:23
+ * showapi工厂类
+ *
+ * @author Ymmmsick
+ * @since 2017-09-08 15:35:24
  */
-public class APIServiceFactory {
+public class ShowApiServiceFactory {
 
     private final static long DEFAULT_TIMEOUT = 10;
     private final Gson mGsonDateFormat;
 
-    private APIServiceFactory() {
+    private ShowApiServiceFactory() {
         mGsonDateFormat = new GsonBuilder()
                 .setDateFormat("yyyy-MM-dd hh:mm:ss")
                 .create();
     }
 
     private static class SingletonHolder {
-        private static final APIServiceFactory INSTANCE = new APIServiceFactory();
+        private static final ShowApiServiceFactory INSTANCE = new ShowApiServiceFactory();
     }
 
-    public static APIServiceFactory getInstance() {
+    public static ShowApiServiceFactory getInstance() {
         return SingletonHolder.INSTANCE;
     }
 
@@ -86,23 +88,13 @@ public class APIServiceFactory {
                     .loggable(BuildConfig.DEBUG)
                     .setLevel(Level.BASIC)
                     .log(Platform.INFO)
-                    .request("LinLin-Request")
-                    .response("LinLin-Response")
+                    .request("NB-Request")
+                    .response("NB-Response")
                     .build();
             httpClientBuilder.addInterceptor(interceptor);
         }
-        //add cookie manage
-//        httpClientBuilder.cookieJar(new CookieJar() {
-//            @Override
-//            public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
-//                LLCookieManager.saveCookie(cookies);
-//            }
-//
-//            @Override
-//            public List<Cookie> loadForRequest(HttpUrl url) {
-//                return LLCookieManager.readCookie();
-//            }
-//        });
+        //添加showapi公共请求参数
+        httpClientBuilder.addInterceptor(new ShowApiCommonParamsInterceptor());
         return httpClientBuilder.build();
     }
 

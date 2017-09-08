@@ -22,7 +22,7 @@ public abstract class LLFunction<L, R> implements Function<BaseResBean<L>, Obser
             //弹出重新登录对话框
 //                DialogHelper.openReloginDialog(LLAppManager.getInstance().currentActivity());
 //            }
-            String message = lBaseResBean.getRet_message() != null ? lBaseResBean.getRet_message() : "ErrorData unknow";
+            String message = lBaseResBean.getShowapi_res_error() != null ? lBaseResBean.getShowapi_res_error() : "ErrorData unknow";
             ServerException serverException = new ServerException();
             serverException.message = message;
             throw serverException;
