@@ -1,7 +1,7 @@
 package com.msr.nbmusic.api.error;
 
 
-import com.msr.nbmusic.bean.base.BaseResponseBean;
+import com.msr.nbmusic.bean.base.BaseResBean;
 
 import io.reactivex.ObservableSource;
 import io.reactivex.annotations.NonNull;
@@ -12,23 +12,23 @@ import io.reactivex.functions.Function;
  * Created by Ymmmsick on 5/18/17.
  */
 
-public abstract class LLFunction<L, R> implements Function<BaseResponseBean<L>, ObservableSource<R>> {
+public abstract class LLFunction<L, R> implements Function<BaseResBean<L>, ObservableSource<R>> {
 
     @Override
-    public ObservableSource<R> apply(@NonNull BaseResponseBean<L> lBaseResponseBean) throws Exception {
-        if (!lBaseResponseBean.isSuccess()) {
+    public ObservableSource<R> apply(@NonNull BaseResBean<L> lBaseResBean) throws Exception {
+        if (!lBaseResBean.isSuccess()) {
             //服务端返回需要重新登录的status
-            if (UserStatus.isNeedReLogin(lBaseResponseBean)) {
-                //弹出重新登录对话框
+//            if (UserStatus.isNeedReLogin(baseResBean) || UserStatus.isNeedReLogin(baseResBean2)) {
+            //弹出重新登录对话框
 //                DialogHelper.openReloginDialog(LLAppManager.getInstance().currentActivity());
-            }
-            String message = lBaseResponseBean.getErrorData().getMessage() != null ? lBaseResponseBean.getErrorData().getMessage() : "ErrorData unknow";
+//            }
+            String message = lBaseResBean.getRet_message() != null ? lBaseResBean.getRet_message() : "ErrorData unknow";
             ServerException serverException = new ServerException();
             serverException.message = message;
             throw serverException;
         }
-        return applyL(lBaseResponseBean);
+        return applyL(lBaseResBean);
     }
 
-    public abstract ObservableSource<R> applyL(@NonNull BaseResponseBean<L> baseResponseBean) throws Exception;
+    public abstract ObservableSource<R> applyL(@NonNull BaseResBean<L> baseResBean) throws Exception;
 }

@@ -1,6 +1,6 @@
 package com.msr.nbmusic.api.error;
 
-import com.msr.nbmusic.bean.base.BaseResponseBean;
+import com.msr.nbmusic.bean.base.BaseResBean;
 
 import io.reactivex.functions.Function;
 
@@ -12,18 +12,18 @@ import io.reactivex.functions.Function;
  * @author Ymmmsick
  * @date 2017-05-12 16:58:10
  */
-public class HandleFuc<T> implements Function<BaseResponseBean<T>, T> {
+public class HandleFuc<T> implements Function<BaseResBean<T>, T> {
     @Override
-    public T apply(BaseResponseBean<T> response) throws Exception {
+    public T apply(BaseResBean<T> response) throws Exception {
         //response中code码不为0 出现错误
         if (!response.isSuccess()) {
             //服务端返回需要重新登录的status
-//            if (UserStatus.isNeedReLogin(response) && !(BAAppManager.getInstance().currentActivity() instanceof LoginActivity)) {
+//            if (UserStatus.isNeedReLogin(response) && !(NBAppManager.getInstance().currentActivity() instanceof LoginActivity)) {
 //                Logger.e("Server request user relogin!");
 //                //如果当前不是登录界面,弹出重新登录对话框
 //                DialogHelper.openReloginDialog(LLAppManager.getInstance().currentActivity());
 //            }
-            String message = response.getErrorData().getMessage() != null ? response.getErrorData().getMessage() : "ErrorData unknow";
+            String message = response.getRet_message() != null ? response.getRet_message() : "ErrorData unknow";
             ServerException serverException = new ServerException();
             serverException.message = message;
             throw serverException;

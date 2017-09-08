@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.msr.nbmusic.R;
-import com.msr.nbmusic.comm.BAConstants;
+import com.msr.nbmusic.comm.NBConstants;
 import com.msr.nbmusic.utils.ApkUtils;
 import com.msr.nbmusic.utils.FileUtils;
 
@@ -99,7 +99,7 @@ public class UpdateService extends Service {
             downloadURL = intent.getStringExtra("downloadURL");
             versionCode = intent.getStringExtra("versionCode");
             savePath = FileUtils.getCacheDir(this).getAbsolutePath();
-            mApkName = BAConstants.APK_NAME;
+            mApkName = NBConstants.APK_NAME;
             // 启动新线程下载软件
             new downloadApkThread().start();
 

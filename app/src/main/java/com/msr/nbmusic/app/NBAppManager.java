@@ -20,13 +20,13 @@ import java.util.Stack;
  *
  * @author liminghuang
  */
-public final class BAAppManager {
+public final class NBAppManager {
 
     // 使用弱引用是因为存在未使用AppManager的finish方法来释放的activity，但mActivityStack并未断开对其应用导致内存泄露的问题
     private Stack<WeakReference<Activity>> mActivityStack;
-    private static volatile BAAppManager sInstance;
+    private static volatile NBAppManager sInstance;
 
-    private BAAppManager() {
+    private NBAppManager() {
     }
 
     /**
@@ -34,11 +34,11 @@ public final class BAAppManager {
      *
      * @return 返回AppManager的单例
      */
-    public static BAAppManager getInstance() {
+    public static NBAppManager getInstance() {
         if (sInstance == null) {
-            synchronized (BAAppManager.class) {
+            synchronized (NBAppManager.class) {
                 if (sInstance == null) {
-                    sInstance = new BAAppManager();
+                    sInstance = new NBAppManager();
                 }
             }
         }

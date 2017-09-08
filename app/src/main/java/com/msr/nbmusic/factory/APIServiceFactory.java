@@ -2,7 +2,7 @@ package com.msr.nbmusic.factory;
 
 
 import com.msr.nbmusic.BuildConfig;
-import com.msr.nbmusic.app.BAApplication;
+import com.msr.nbmusic.app.NBApplication;
 import com.msr.nbmusic.utils.FileUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -79,7 +79,7 @@ public class APIServiceFactory {
         httpClientBuilder.writeTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
         httpClientBuilder.readTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
         //设置缓存
-        File httpCacheDirectory = new File(FileUtils.getCacheDir(BAApplication.getInstance()), "OkHttpCache");
+        File httpCacheDirectory = new File(FileUtils.getCacheDir(NBApplication.getInstance()), "OkHttpCache");
         httpClientBuilder.cache(new Cache(httpCacheDirectory, 10 * 1024 * 1024));
         if (BuildConfig.DEBUG) {
             LoggingInterceptor interceptor = new LoggingInterceptor.Builder()

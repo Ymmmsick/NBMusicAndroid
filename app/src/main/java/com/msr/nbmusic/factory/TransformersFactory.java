@@ -2,7 +2,7 @@ package com.msr.nbmusic.factory;
 
 import com.msr.nbmusic.api.error.HandleFuc;
 import com.msr.nbmusic.api.error.HttpResponseFunc;
-import com.msr.nbmusic.bean.base.BaseResponseBean;
+import com.msr.nbmusic.bean.base.BaseResBean;
 import com.trello.rxlifecycle2.LifecycleProvider;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 import com.trello.rxlifecycle2.android.FragmentEvent;
@@ -37,10 +37,10 @@ public class TransformersFactory {
         };
     }
 
-    public static <T> ObservableTransformer<BaseResponseBean<T>, T> errorTransformer() {
-        return new ObservableTransformer<BaseResponseBean<T>, T>() {
+    public static <T> ObservableTransformer<BaseResBean<T>, T> errorTransformer() {
+        return new ObservableTransformer<BaseResBean<T>, T>() {
             @Override
-            public ObservableSource<T> apply(@NonNull Observable<BaseResponseBean<T>> upstream) {
+            public ObservableSource<T> apply(@NonNull Observable<BaseResBean<T>> upstream) {
                 return (Observable<T>) upstream.map(new HandleFuc<T>()).onErrorResumeNext(new HttpResponseFunc<T>());
             }
         };
@@ -53,10 +53,10 @@ public class TransformersFactory {
      * @param <T>
      * @return
      */
-    public static <T> ObservableTransformer<BaseResponseBean<T>, T> commonTransformerA(final LifecycleProvider lifecycleProvider) {
-        return new ObservableTransformer<BaseResponseBean<T>, T>() {
+    public static <T> ObservableTransformer<BaseResBean<T>, T> commonTransformerA(final LifecycleProvider lifecycleProvider) {
+        return new ObservableTransformer<BaseResBean<T>, T>() {
             @Override
-            public ObservableSource<T> apply(@NonNull Observable<BaseResponseBean<T>> upstream) {
+            public ObservableSource<T> apply(@NonNull Observable<BaseResBean<T>> upstream) {
                 return upstream.observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io())
                         .map(new HandleFuc<T>()).onErrorResumeNext(new HttpResponseFunc<T>())
                         .compose(lifecycleProvider.<T>bindUntilEvent(ActivityEvent.DESTROY));
@@ -71,10 +71,10 @@ public class TransformersFactory {
      * @param <T>
      * @return
      */
-    public static <T> ObservableTransformer<BaseResponseBean<T>, T> commonTransformerF(final LifecycleProvider lifecycleProvider) {
-        return new ObservableTransformer<BaseResponseBean<T>, T>() {
+    public static <T> ObservableTransformer<BaseResBean<T>, T> commonTransformerF(final LifecycleProvider lifecycleProvider) {
+        return new ObservableTransformer<BaseResBean<T>, T>() {
             @Override
-            public ObservableSource<T> apply(@NonNull Observable<BaseResponseBean<T>> upstream) {
+            public ObservableSource<T> apply(@NonNull Observable<BaseResBean<T>> upstream) {
                 return upstream.observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io())
                         .map(new HandleFuc<T>()).onErrorResumeNext(new HttpResponseFunc<T>())
                         .compose(lifecycleProvider.<T>bindUntilEvent(FragmentEvent.DESTROY));

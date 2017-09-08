@@ -6,7 +6,7 @@ import com.michaelflisar.rxbus2.rx.RxBusMode;
 
 import io.reactivex.functions.Consumer;
 
-public class BARxBus {
+public class NBRxBus {
 
     public static void post(Object obj) {
         RxBus.get().send(obj);

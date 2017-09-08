@@ -5,17 +5,17 @@ import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
 
-import com.msr.nbmusic.comm.BASPManager;
+import com.msr.nbmusic.comm.NBSPManager;
 import com.msr.nbmusic.utils.ProcessUtils;
 
 /**
  * Created by Ymmmsick on 17/5/7.
  */
-public class BAApplication extends Application {
+public class NBApplication extends Application {
 
-    private static BAApplication linlinApplication;
+    private static NBApplication linlinApplication;
 
-    public static BAApplication getInstance() {
+    public static NBApplication getInstance() {
         return linlinApplication;
     }
 
@@ -33,7 +33,7 @@ public class BAApplication extends Application {
     private void initOther() {
 //        LLDBManager.getInstance().init(this);//db init
 //        LLBSManager.getInstance().init(this);//lbs init
-        BASPManager.getInstance().init(this);//secure sp init
+        NBSPManager.getInstance().init(this);//secure sp init
 //        LLUserManager.getInstance().loadUserDataFromSP();//从SP中读取用户数据,必须在LLRongCloudManager之前，因为LLRongCloudManager会进行用户登录
     }
 
@@ -44,7 +44,7 @@ public class BAApplication extends Application {
         registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override
             public void onActivityCreated(Activity activity, Bundle bundle) {
-                BAAppManager.getInstance().addActivity(activity);
+                NBAppManager.getInstance().addActivity(activity);
             }
 
             @Override
@@ -74,7 +74,7 @@ public class BAApplication extends Application {
 
             @Override
             public void onActivityDestroyed(Activity activity) {
-                BAAppManager.getInstance().removeActivity(activity);
+                NBAppManager.getInstance().removeActivity(activity);
             }
         });
     }

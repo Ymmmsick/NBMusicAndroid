@@ -10,14 +10,14 @@ import java.util.Set;
  * Created by Ymmmsick on 2017-05-14.
  */
 
-public class BASPManager {
+public class NBSPManager {
 
     private static class SingletonHolder {
-        private static final BASPManager instance = new BASPManager();
+        private static final NBSPManager instance = new NBSPManager();
     }
 
-    public static BASPManager getInstance() {
-        return BASPManager.SingletonHolder.instance;
+    public static NBSPManager getInstance() {
+        return NBSPManager.SingletonHolder.instance;
     }
 
     private Context context;
