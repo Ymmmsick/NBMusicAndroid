@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
 
+import com.facebook.stetho.Stetho;
 import com.msr.nbmusic.comm.NBSPManager;
 import com.msr.nbmusic.utils.ProcessUtils;
 
@@ -35,6 +36,7 @@ public class NBApplication extends Application {
 //        LLBSManager.getInstance().init(this);//lbs init
         NBSPManager.getInstance().init(this);//secure sp init
 //        LLUserManager.getInstance().loadUserDataFromSP();//从SP中读取用户数据,必须在LLRongCloudManager之前，因为LLRongCloudManager会进行用户登录
+        Stetho.initializeWithDefaults(this);//初始化facebook stetho调试工具
     }
 
     /**

@@ -23,11 +23,11 @@ public class HandleFuc<T> implements Function<BaseResBean<T>, T> {
 //                //如果当前不是登录界面,弹出重新登录对话框
 //                DialogHelper.openReloginDialog(LLAppManager.getInstance().currentActivity());
 //            }
-            String message = response.getRet_message() != null ? response.getRet_message() : "ErrorData unknow";
+            String message = response.getShowapi_res_error() != null ? response.getShowapi_res_error() : "ErrorData unknow";
             ServerException serverException = new ServerException();
             serverException.message = message;
             throw serverException;
         }
-        return response.getData();
+        return response.getShowapi_res_body();
     }
 }

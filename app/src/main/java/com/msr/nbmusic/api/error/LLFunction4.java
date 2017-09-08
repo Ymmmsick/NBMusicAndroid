@@ -30,22 +30,22 @@ public class LLFunction4 implements Function4<BaseResBean, BaseResBean, BaseResB
 //            }
             String message;
             if (!res1)
-                message = baseResBean.getRet_message() != null ? baseResBean.getRet_message() : "ErrorData unknow";
+                message = baseResBean.getShowapi_res_error() != null ? baseResBean.getShowapi_res_error() : "ErrorData unknow";
             else if (!res2)
-                message = baseResBean2.getRet_message() != null ? baseResBean2.getRet_message() : "ErrorData unknow";
+                message = baseResBean2.getShowapi_res_error() != null ? baseResBean2.getShowapi_res_error() : "ErrorData unknow";
             else if (!res3)
-                message = baseResBean3.getRet_message() != null ? baseResBean3.getRet_message() : "ErrorData unknow";
+                message = baseResBean3.getShowapi_res_error() != null ? baseResBean3.getShowapi_res_error() : "ErrorData unknow";
             else
-                message = baseResBean4.getRet_message() != null ? baseResBean4.getRet_message() : "ErrorData unknow";
+                message = baseResBean4.getShowapi_res_error() != null ? baseResBean4.getShowapi_res_error() : "ErrorData unknow";
             ServerException serverException = new ServerException();
             serverException.message = message;
             throw serverException;
         }
         List list = new ArrayList();
-        list.add(baseResBean.getData());
-        list.add(baseResBean2.getData());
-        list.add(baseResBean3.getData());
-        list.add(baseResBean4.getData());
+        list.add(baseResBean.getShowapi_res_body());
+        list.add(baseResBean2.getShowapi_res_body());
+        list.add(baseResBean3.getShowapi_res_body());
+        list.add(baseResBean4.getShowapi_res_body());
         return list;
     }
 }
