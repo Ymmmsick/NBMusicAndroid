@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="divider">0.5dp</dimen>
+    <dimen name="actionbarSize">48dp</dimen>
+    <dimen name="actionbar_titlesize">18sp</dimen>
+</resources>
