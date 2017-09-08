@@ -17,6 +17,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
+        xiaomi {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "xiaomi"]
+        }
+        _360 {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "_360"]
+        }
+        baidu {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "baidu"]
+        }
+        wandoujia {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "wandoujia"]
+        }
+    }
+
 }
 
 configurations.all {
@@ -63,4 +78,6 @@ dependencies {
     compile 'homhomlin.lib:apsts:1.8.0'
     //banner
     compile 'com.bigkoo:convenientbanner:2.0.5'
+    //umeng
+    compile 'com.umeng.analytics:analytics:latest.integration'
 }

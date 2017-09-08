@@ -3,6 +3,7 @@ package com.msr.nbmusic.ui.activity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.lhh.apst.library.AdvancedPagerSlidingTabStrip;
 import com.msr.nbmusic.R;
 import com.msr.nbmusic.contract.MainContract;
 import com.msr.nbmusic.event.BADialogListener;
@@ -14,7 +15,6 @@ import com.msr.nbmusic.ui.fragment.TestFragment;
 import com.msr.nbmusic.ui.widgets.BanSlideViewPager;
 import com.msr.nbmusic.ui.widgets.DialogHelper;
 import com.msr.nbmusic.utils.ToastUtils;
-import com.lhh.apst.library.AdvancedPagerSlidingTabStrip;
 
 import butterknife.BindView;
 

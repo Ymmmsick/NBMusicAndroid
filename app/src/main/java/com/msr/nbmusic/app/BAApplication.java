@@ -31,10 +31,10 @@ public class BAApplication extends Application {
     }
 
     private void initOther() {
-//        LLDBManager.getInstance().init(this);//db init
-//        LLBSManager.getInstance().init(this);//lbs init
+        //        LLDBManager.getInstance().init(this);//db init
+        //        LLBSManager.getInstance().init(this);//lbs init
         BASPManager.getInstance().init(this);//secure sp init
-//        LLUserManager.getInstance().loadUserDataFromSP();//从SP中读取用户数据,必须在LLRongCloudManager之前，因为LLRongCloudManager会进行用户登录
+        //        LLUserManager.getInstance().loadUserDataFromSP();//从SP中读取用户数据,必须在LLRongCloudManager之前，因为LLRongCloudManager会进行用户登录
     }
 
     /**
