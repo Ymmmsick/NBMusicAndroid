@@ -9,6 +9,7 @@ import com.msr.nbmusic.contract.LoadingContract;
 import com.msr.nbmusic.factory.TransformersFactory;
 import com.msr.nbmusic.presenter.LoadingPresenter;
 import com.msr.nbmusic.ui.base.BaseMVPActivity;
+import com.msr.nbmusic.ui.widgets.font.NBTextView;
 
 import butterknife.BindView;
 import io.reactivex.Observable;
@@ -24,9 +25,9 @@ import io.reactivex.functions.Consumer;
 public class LoadingActivity extends BaseMVPActivity<LoadingPresenter> implements LoadingContract.View {
 
     @BindView(R.id.loading_chinese)
-    TextView loadingChinese;
+    NBTextView loadingChinese;
     @BindView(R.id.loading_english)
-    TextView loadingEnglish;
+    NBTextView loadingEnglish;
 
     @Override
     public int returnLayoutID() {
