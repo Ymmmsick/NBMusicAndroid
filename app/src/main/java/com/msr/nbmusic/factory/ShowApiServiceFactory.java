@@ -83,6 +83,8 @@ public class ShowApiServiceFactory {
         //设置缓存
         File httpCacheDirectory = new File(FileUtils.getCacheDir(NBApplication.getInstance()), "OkHttpCache");
         httpClientBuilder.cache(new Cache(httpCacheDirectory, 10 * 1024 * 1024));
+        //添加showapi公共请求参数
+        httpClientBuilder.addInterceptor(new ShowApiCommonParamsInterceptor());
         if (BuildConfig.DEBUG) {
             LoggingInterceptor interceptor = new LoggingInterceptor.Builder()
                     .loggable(BuildConfig.DEBUG)
@@ -93,8 +95,6 @@ public class ShowApiServiceFactory {
                     .build();
             httpClientBuilder.addInterceptor(interceptor);
         }
-        //添加showapi公共请求参数
-        httpClientBuilder.addInterceptor(new ShowApiCommonParamsInterceptor());
         return httpClientBuilder.build();
     }
 
