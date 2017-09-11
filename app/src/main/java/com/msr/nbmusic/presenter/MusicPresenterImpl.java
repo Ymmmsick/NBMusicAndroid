@@ -4,9 +4,9 @@ package com.msr.nbmusic.presenter;
 import com.msr.nbmusic.api.error.LObserver;
 import com.msr.nbmusic.api.error.ResponeThrowable;
 import com.msr.nbmusic.bean.response.NewMusicBean;
-import com.msr.nbmusic.contract.HomeContract;
+import com.msr.nbmusic.contract.MusicContract;
 import com.msr.nbmusic.factory.TransformersFactory;
-import com.msr.nbmusic.model.HomeModelImpl;
+import com.msr.nbmusic.model.MusicModelImpl;
 import com.msr.nbmusic.mvp.BasePresenter;
 import com.msr.nbmusic.mvp.IModel;
 import com.trello.rxlifecycle2.LifecycleProvider;
@@ -18,12 +18,14 @@ import io.reactivex.disposables.Disposable;
  * Created by Ymmmsick on 8/18/17.
  */
 
-public class HomePresenterImpl extends BasePresenter<HomeContract.View, HomeModelImpl>
-        implements HomeContract.Presenter {
+public class MusicPresenterImpl extends BasePresenter<MusicContract.View, MusicModelImpl>
+        implements MusicContract.Presenter {
+
+    private NewMusicBean newMusicBean;
 
     @Override
     protected IModel createModel() {
-        return new HomeModelImpl();
+        return new MusicModelImpl();
     }
 
     @Override
@@ -42,9 +44,14 @@ public class HomePresenterImpl extends BasePresenter<HomeContract.View, HomeMode
                     }
 
                     @Override
-                    public void onNext(@NonNull NewMusicBean newMusicBean) {
+                    public void onNext(@NonNull NewMusicBean bean) {
+                        newMusicBean = bean;
                         getView().loadNewMusicSuccess(newMusicBean);
                     }
                 });
+    }
+
+    public NewMusicBean getNewMusicBean() {
+        return newMusicBean;
     }
 }

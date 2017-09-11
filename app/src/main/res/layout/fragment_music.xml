@@ -31,7 +31,7 @@
                 android:textColor="@color/text_common_gray" />
 
             <com.msr.nbmusic.ui.widgets.font.NBTextView
-                android:id="@+id/home_newmusic_total"
+                android:id="@+id/music_newmusic_total"
                 style="@style/fontsize_spuper_small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
         </RelativeLayout>
 
         <ListView
-            android:id="@+id/home_newmusic"
+            android:id="@+id/music_newmusic"
             style="@style/ListViewStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

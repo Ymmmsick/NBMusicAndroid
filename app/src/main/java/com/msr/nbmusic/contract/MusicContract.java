@@ -12,7 +12,7 @@ import io.reactivex.Observable;
  * Created by Ymmmsick on 8/18/17.
  */
 
-public interface HomeContract {
+public interface MusicContract {
     interface Model extends IModel {
         Observable<BaseResBean<NewMusicBean>> getMusicData(int topid);
     }

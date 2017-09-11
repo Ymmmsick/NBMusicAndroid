@@ -1,12 +1,13 @@
 package com.msr.nbmusic.bean.response;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Ymmmsick on 9/11/17.
  */
 
-public class NewMusicBean {
+public class NewMusicBean implements Serializable {
     /**
      * ret_code : 0
      * songlist : [{"albumid":1181826,"downUrl":"http://tsmusic24.tc.qq.com/104779440.mp3","seconds":291,"singerid":4286,"singername":"林俊杰","songid":104779440,"songname":"只要有你的地方 (《消失的爱人》电影主题曲)","url":"http://ws.stream.qqmusic.qq.com/104779440.m4a?fromtag=46"}]
@@ -37,7 +38,7 @@ public class NewMusicBean {
         this.ret_code = ret_code;
     }
 
-    public static class PagebeanBean {
+    public static class PagebeanBean implements Serializable {
         private int ret_code;
         private int totalpage;
         /**
@@ -77,7 +78,7 @@ public class NewMusicBean {
             this.songlist = songlist;
         }
 
-        public static class SonglistBean {
+        public static class SonglistBean implements Serializable {
             private int albumid;
             private String downUrl;
             private String albumpic_big;

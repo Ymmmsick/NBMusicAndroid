@@ -3,7 +3,7 @@ package com.msr.nbmusic.model;
 import com.msr.nbmusic.api.ShowApi;
 import com.msr.nbmusic.bean.base.BaseResBean;
 import com.msr.nbmusic.bean.response.NewMusicBean;
-import com.msr.nbmusic.contract.HomeContract;
+import com.msr.nbmusic.contract.MusicContract;
 import com.msr.nbmusic.factory.ShowApiServiceFactory;
 
 import io.reactivex.Observable;
@@ -12,7 +12,7 @@ import io.reactivex.Observable;
  * Created by Ymmmsick on 8/18/17.
  */
 
-public class HomeModelImpl implements HomeContract.Model {
+public class MusicModelImpl implements MusicContract.Model {
 
     @Override
     public Observable<BaseResBean<NewMusicBean>> getMusicData(int topid) {

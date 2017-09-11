@@ -2,7 +2,6 @@ package com.msr.nbmusic.ui.activity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.RadioButton;
 
 import com.msr.nbmusic.R;
@@ -10,7 +9,7 @@ import com.msr.nbmusic.contract.MainContract;
 import com.msr.nbmusic.presenter.MainPresenterImpl;
 import com.msr.nbmusic.ui.adapter.MainPagerAdapter;
 import com.msr.nbmusic.ui.base.BaseMVPActivity;
-import com.msr.nbmusic.ui.fragment.HomeFragment;
+import com.msr.nbmusic.ui.fragment.MusicFragment;
 import com.msr.nbmusic.ui.fragment.TestFragment;
 import com.msr.nbmusic.ui.widgets.BanSlideViewPager;
 
@@ -25,10 +24,8 @@ public class MainActivity extends BaseMVPActivity<MainPresenterImpl> implements 
     RadioButton mainTabMine;
     @BindView(R.id.main_viewpager)
     BanSlideViewPager mainViewpager;
-    @BindView(R.id.main_play)
-    ImageView mainPlay;
 
-    private Class[] fragments = {HomeFragment.class, TestFragment.class, TestFragment.class, TestFragment.class};
+    private Class[] fragments = {MusicFragment.class, TestFragment.class, TestFragment.class, TestFragment.class};
     private MainPagerAdapter adapter;
 
     @Override
@@ -49,7 +46,7 @@ public class MainActivity extends BaseMVPActivity<MainPresenterImpl> implements 
         return new MainPresenterImpl();
     }
 
-    @OnClick({R.id.main_tab_music, R.id.main_tab_mine,R.id.main_play})
+    @OnClick({R.id.main_tab_music, R.id.main_tab_mine})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.main_tab_music://Music
@@ -57,8 +54,6 @@ public class MainActivity extends BaseMVPActivity<MainPresenterImpl> implements 
                 break;
             case R.id.main_tab_mine://Mine
                 mainViewpager.setCurrentItem(1);
-                break;
-            case R.id.main_play:
                 break;
         }
     }

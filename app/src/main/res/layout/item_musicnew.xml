@@ -7,35 +7,24 @@
     android:orientation="vertical"
     android:padding="10dp">
 
-    <com.msr.nbmusic.ui.widgets.font.NBTextView
-        android:id="@+id/item_newmusic_index"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="10dp"
-        android:text="1."
-        android:textColor="@color/text_common"
-        android:textSize="10sp" />
-
     <ImageView
-        android:id="@+id/item_newmusic_albumpic"
+        android:id="@+id/item_musicnew_albumpic"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginRight="10dp"
-        android:layout_toRightOf="@+id/item_newmusic_index"
         android:scaleType="centerCrop"
         android:src="@color/white" />
 
     <LinearLayout
-        android:id="@+id/item_newmusic_singinfo"
+        android:id="@+id/item_musicnew_singinfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/item_newmusic_albumpic"
+        android:layout_toRightOf="@+id/item_musicnew_albumpic"
         android:orientation="vertical">
 
         <com.msr.nbmusic.ui.widgets.font.NBTextView
-            android:id="@+id/item_newmusic_name"
+            android:id="@+id/item_musicnew_name"
             style="@style/fontsize_spuper_small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -46,7 +35,7 @@
             android:textColor="@color/text_common" />
 
         <com.msr.nbmusic.ui.widgets.font.NBTextView
-            android:id="@+id/item_newmusic_singer"
+            android:id="@+id/item_musicnew_singer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ellipsize="end"

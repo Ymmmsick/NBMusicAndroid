@@ -4,41 +4,10 @@
     android:layout_height="match_parent"
     android:background="@color/bg_common">
 
-    <RelativeLayout
-        android:id="@+id/main_top"
+    <com.msr.nbmusic.ui.widgets.NBActionbar
+        android:id="@+id/main_actionbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-        <RelativeLayout
-            android:id="@+id/main_actionbar"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/actionbarSize"
-            android:background="@color/white">
-
-            <ImageView
-                android:id="@+id/main_play"
-                android:layout_width="@dimen/actionbarSize"
-                android:layout_height="@dimen/actionbarSize"
-                android:layout_alignParentRight="true"
-                android:adjustViewBounds="true"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_play" />
-        </RelativeLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/main_actionbar"
-            android:background="@drawable/shadow_bottom" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:src="@drawable/ic_nb_music" />
-    </RelativeLayout>
+        android:layout_height="wrap_content" />
 
     <RadioGroup
         android:id="@+id/main_tabs"
@@ -87,6 +56,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/main_tabs_divider"
-        android:layout_below="@+id/main_top" />
+        android:layout_below="@+id/main_actionbar" />
 
 </RelativeLayout>
