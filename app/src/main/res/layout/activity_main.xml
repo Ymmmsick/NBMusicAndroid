@@ -1,27 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/bg_common">
 
-    <com.lhh.apst.library.AdvancedPagerSlidingTabStrip
-        android:id="@+id/main_tabs"
-        style="@style/pagertab_icon_style"
+    <RelativeLayout
+        android:id="@+id/main_top"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <RelativeLayout
+            android:id="@+id/main_actionbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/actionbarSize"
+            android:background="@color/white">
+
+            <ImageView
+                android:layout_width="@dimen/actionbarSize"
+                android:layout_height="@dimen/actionbarSize"
+                android:layout_alignParentRight="true"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_play" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/main_actionbar"
+            android:background="@drawable/shadow_bottom" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_nb_music" />
+    </RelativeLayout>
+
+    <RadioGroup
+        android:id="@+id/main_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
         android:layout_alignParentBottom="true"
-        android:fillViewport="false" />
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp">
+
+        <RadioButton
+            android:id="@+id/main_tab_music"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@null"
+            android:checked="true"
+            android:drawableTop="@drawable/selector_tab_music"
+            android:gravity="center"
+            android:paddingTop="5dp" />
+
+        <RadioButton
+            android:id="@+id/main_tab_mine"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@null"
+            android:drawableTop="@drawable/selector_tab_mine"
+            android:gravity="center"
+            android:paddingTop="5dp" />
+    </RadioGroup>
 
     <View
-        android:id="@+id/main_divider"
+        android:id="@+id/main_tabs_divider"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/divider"
-        android:layout_above="@id/main_tabs"
-        android:background="@color/divider_common" />
+        android:layout_height="1dp"
+        android:layout_above="@+id/main_tabs"
+        android:background="@drawable/shadow_top" />
 
     <com.msr.nbmusic.ui.widgets.BanSlideViewPager
         android:id="@+id/main_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/main_divider" />
+        android:layout_above="@id/main_tabs_divider"
+        android:layout_below="@+id/main_top" />
 
 </RelativeLayout>

@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#f51932</color>
-    <color name="colorPrimaryDark">#be1a2d</color>
+    <color name="colorPrimary">@android:color/white</color>
+    <color name="colorPrimaryDark">@android:color/white</color>
     <color name="colorAccent">#be1a2d</color>
     <color name="white">@android:color/white</color>
     <color name="black">@android:color/black</color>
     <color name="home_bar_text_push">#ff5959</color>
     <color name="text_common_color">#999999</color>
-    <color name="common_bg">#F4F4F4</color>
+    <color name="bg_common">#F4F4F6</color>
     <color name="divider_common">#e6e6e6</color>
     <color name="half_transparent">#60000000</color>
+    <color name="text_common">#5F5F5F</color>
+    <color name="text_common_gray">#B3B3B3</color>
 </resources>

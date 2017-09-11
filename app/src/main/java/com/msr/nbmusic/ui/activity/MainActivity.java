@@ -2,26 +2,26 @@ package com.msr.nbmusic.ui.activity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RadioButton;
 
-import com.lhh.apst.library.AdvancedPagerSlidingTabStrip;
 import com.msr.nbmusic.R;
 import com.msr.nbmusic.contract.MainContract;
-import com.msr.nbmusic.event.BADialogListener;
 import com.msr.nbmusic.presenter.MainPresenterImpl;
 import com.msr.nbmusic.ui.adapter.MainPagerAdapter;
 import com.msr.nbmusic.ui.base.BaseMVPActivity;
 import com.msr.nbmusic.ui.fragment.HomeFragment;
 import com.msr.nbmusic.ui.fragment.TestFragment;
 import com.msr.nbmusic.ui.widgets.BanSlideViewPager;
-import com.msr.nbmusic.ui.widgets.DialogHelper;
-import com.msr.nbmusic.utils.ToastUtils;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class MainActivity extends BaseMVPActivity<MainPresenterImpl> implements MainContract.View {
 
-    @BindView(R.id.main_tabs)
-    AdvancedPagerSlidingTabStrip mainTabs;
+    @BindView(R.id.main_tab_music)
+    RadioButton mainTabMusic;
+    @BindView(R.id.main_tab_mine)
+    RadioButton mainTabMine;
     @BindView(R.id.main_viewpager)
     BanSlideViewPager mainViewpager;
 
@@ -35,20 +35,10 @@ public class MainActivity extends BaseMVPActivity<MainPresenterImpl> implements 
 
     @Override
     public void TODO(Bundle savedInstanceState) {
-        mainViewpager.setOffscreenPageLimit(MainPagerAdapter.VIEW_SIZE);
-        mainViewpager.setScrollEnable(false);
         adapter = new MainPagerAdapter(getSupportFragmentManager(), fragments);
+        mainViewpager.setOffscreenPageLimit(fragments.length);
         mainViewpager.setAdapter(adapter);
-        mainTabs.setViewPager(mainViewpager);
         mainViewpager.setCurrentItem(0);
-        mainTabs.showDot(0, "99+");
-
-        DialogHelper.openAdsDialog(this, new BADialogListener() {
-            @Override
-            public void onClick(View view) {
-                ToastUtils.show(getActivity(), "you click ads!");
-            }
-        });
     }
 
     @Override
@@ -56,4 +46,15 @@ public class MainActivity extends BaseMVPActivity<MainPresenterImpl> implements 
         return new MainPresenterImpl();
     }
 
+    @OnClick({R.id.main_tab_music, R.id.main_tab_mine})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.main_tab_music://Music
+                mainViewpager.setCurrentItem(0);
+                break;
+            case R.id.main_tab_mine://Mine
+                mainViewpager.setCurrentItem(1);
+                break;
+        }
+    }
 }

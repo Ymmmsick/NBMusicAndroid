@@ -55,18 +55,10 @@
         <item name="android:typeface">monospace</item>
     </style>
 
-    <style name="pagertab_icon_style">
-        <item name="android:background">@color/white</item>
-        <item name="apTabBackground">@color/white</item>
-        <item name="android:textSize">11sp</item>
-        <item name="android:textColor">@color/text_common_color</item>
-        <item name="android:textAppearance">@style/CustomTabPageIndicator.Text</item>
-        <item name="apTabIndicatorColor">@color/home_bar_text_push</item>
-        <item name="apTabUnderlineColor">#1A000000</item>
-        <item name="apTabDividerColor">#00000000</item>
-        <item name="apTabShouldExpand">false</item>
-        <item name="apTabPaddingLeftRight">8dp</item>
-        <item name="apTabPaddingTopBottom">6dp</item>
-        <item name="apTabTextSelectColor">@color/home_bar_text_push</item>
+    <style name="ListViewStyle">
+        <item name="android:cacheColorHint">@android:color/transparent</item>
+        <item name="android:fadingEdge">none</item>
+        <item name="android:scrollbars">none</item>
+        <item name="android:overScrollMode">never</item>
     </style>
 </resources>
