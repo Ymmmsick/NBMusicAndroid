@@ -6,6 +6,7 @@ import android.app.Application;
 import android.os.Bundle;
 
 import com.facebook.stetho.Stetho;
+import com.msr.nbmusic.comm.NBDBManager;
 import com.msr.nbmusic.comm.NBSPManager;
 import com.msr.nbmusic.utils.ProcessUtils;
 
@@ -14,16 +15,16 @@ import com.msr.nbmusic.utils.ProcessUtils;
  */
 public class NBApplication extends Application {
 
-    private static NBApplication linlinApplication;
+    private static NBApplication sNBApplication;
 
     public static NBApplication getInstance() {
-        return linlinApplication;
+        return sNBApplication;
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
-        linlinApplication = this;
+        sNBApplication = this;
         //便面多进程重复初始化
         if (getApplicationInfo().packageName.equals(ProcessUtils.getCurProcessName(getApplicationContext()))) {
             registerActivityLifecycle();
@@ -32,7 +33,7 @@ public class NBApplication extends Application {
     }
 
     private void initOther() {
-//        LLDBManager.getInstance().init(this);//db init
+        NBDBManager.getInstance();//db init
 //        LLBSManager.getInstance().init(this);//lbs init
         NBSPManager.getInstance().init(this);//secure sp init
 //        LLUserManager.getInstance().loadUserDataFromSP();//从SP中读取用户数据,必须在LLRongCloudManager之前，因为LLRongCloudManager会进行用户登录

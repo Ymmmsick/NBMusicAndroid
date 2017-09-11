@@ -18,6 +18,7 @@
             android:background="@color/white">
 
             <ImageView
+                android:id="@+id/main_play"
                 android:layout_width="@dimen/actionbarSize"
                 android:layout_height="@dimen/actionbarSize"
                 android:layout_alignParentRight="true"
