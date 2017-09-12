@@ -3,10 +3,19 @@ package com.msr.nbmusic.ui.base;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
+import com.msr.nbmusic.R;
 import com.msr.nbmusic.mvp.IPresenter;
 import com.msr.nbmusic.mvp.IView;
 import com.michaelflisar.rxbus2.rx.RxDisposableManager;
+import com.msr.nbmusic.ui.widgets.StatusBarUtil;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import butterknife.ButterKnife;
@@ -21,6 +30,8 @@ public abstract class BaseMVPActivity<P extends IPresenter> extends RxAppCompatA
 
     private Unbinder unbinder;
     protected P presenter;
+    private ActionBar actionBar;
+    private ImageView back;
 
     public abstract int returnLayoutID();
 
@@ -31,11 +42,47 @@ public abstract class BaseMVPActivity<P extends IPresenter> extends RxAppCompatA
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initActionBar();
         setContentView(returnLayoutID());
         unbinder = ButterKnife.bind(this);
         presenter = createPresenter();
         presenter.attachView((IView) this);
         TODO(savedInstanceState);
+    }
+
+    private void initActionBar() {
+        StatusBarUtil.setStatusBarColor(this, R.color.white);
+        StatusBarUtil.setStatusBarLightMode(this);
+        actionBar = getSupportActionBar();
+        if (actionBar == null)
+            return;
+        actionBar.setElevation(0);
+        actionBar.setDisplayShowTitleEnabled(false);
+        actionBar.setDisplayShowCustomEnabled(true);
+        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        ActionBar.LayoutParams layoutParams = new ActionBar.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT,
+                ActionBar.LayoutParams.MATCH_PARENT);
+        layoutParams.gravity = Gravity.CENTER_HORIZONTAL | Gravity.CENTER_HORIZONTAL;
+        View actionbarLayout = LayoutInflater.from(this).inflate(R.layout.view_actionbar, null);
+        actionBar.setCustomView(actionbarLayout, layoutParams);
+        Toolbar parent = (Toolbar) actionbarLayout.getParent();
+        parent.setContentInsetsAbsolute(0, 0);
+        back = (ImageView) actionbarLayout.findViewById(R.id.view_actionbar_back);
+    }
+
+    /**
+     * set actionbar back icon and cilck finish
+     */
+    protected void setActionBarBackEnable() {
+        if (actionBar == null)
+            throw new RuntimeException("actionbar is null,check your theme actionbar enable");
+        back.setVisibility(View.VISIBLE);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     /**

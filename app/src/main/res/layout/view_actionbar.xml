@@ -1,18 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="@dimen/actionbarSize"
+    android:clipChildren="false">
 
     <RelativeLayout
         android:id="@+id/view_actionbar_rl"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/actionbarSize"
+        android:layout_height="47dp"
         android:background="@color/white">
 
         <ImageView
+            android:id="@+id/view_actionbar_back"
+            android:layout_width="47dp"
+            android:layout_height="47dp"
+            android:layout_marginRight="5dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_chevron_left_white_24dp"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/view_actionbar_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_nb_music" />
+
+        <ImageView
             android:id="@+id/view_play"
-            android:layout_width="@dimen/actionbarSize"
-            android:layout_height="@dimen/actionbarSize"
+            android:layout_width="47dp"
+            android:layout_height="47dp"
             android:layout_alignParentRight="true"
             android:adjustViewBounds="true"
             android:scaleType="centerInside"
@@ -24,10 +42,4 @@
         android:layout_height="1dp"
         android:layout_below="@+id/view_actionbar_rl"
         android:background="@drawable/shadow_bottom" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:src="@drawable/ic_nb_music" />
 </RelativeLayout>

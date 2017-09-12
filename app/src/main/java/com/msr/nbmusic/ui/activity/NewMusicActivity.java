@@ -28,6 +28,7 @@ public class NewMusicActivity extends BaseActivity {
 
     @Override
     public void TODO(Bundle savedInstanceState) {
+        setActionBarBackEnable();
         newMusicBean = (NewMusicBean) getIntent().getExtras().getSerializable("newMusicData");
         newMusicAdapter = new NewMusicAdapter(this, newMusicBean.getPagebean().getSonglist());
         newmusicListview.setAdapter(newMusicAdapter);

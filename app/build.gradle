@@ -91,4 +91,8 @@ dependencies {
     compile 'com.umeng.analytics:analytics:latest.integration'
     //greendao 3.2.2
     compile 'org.greenrobot:greendao:3.2.2'
+    //SystemBarTint
+    compile 'com.github.open-android:SystemBarTint:v1.0.0'
+    //circle image view
+    compile 'de.hdodenhof:circleimageview:2.1.0'
 }

@@ -34,6 +34,9 @@
             android:theme="@style/NoActionBar" />
         <activity android:name="com.msr.nbmusic.ui.activity.MainActivity" />
         <activity android:name="com.msr.nbmusic.ui.activity.NewMusicActivity" />
+        <activity
+            android:name="com.msr.nbmusic.ui.activity.MusicPlayActivity"
+            android:launchMode="singleInstance" />
 
         <!-- third config -->
         <meta-data

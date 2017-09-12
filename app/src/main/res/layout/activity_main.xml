@@ -4,11 +4,6 @@
     android:layout_height="match_parent"
     android:background="@color/bg_common">
 
-    <com.msr.nbmusic.ui.widgets.NBActionbar
-        android:id="@+id/main_actionbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
     <RadioGroup
         android:id="@+id/main_tabs"
         android:layout_width="match_parent"
@@ -55,7 +50,6 @@
         android:id="@+id/main_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/main_tabs_divider"
-        android:layout_below="@+id/main_actionbar" />
+        android:layout_above="@id/main_tabs_divider" />
 
 </RelativeLayout>
