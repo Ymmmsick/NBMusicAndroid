@@ -2,6 +2,7 @@ package com.msr.nbmusic.api;
 
 import com.msr.nbmusic.bean.base.BaseResBean;
 import com.msr.nbmusic.bean.response.EnglishBean;
+import com.msr.nbmusic.bean.response.LrcBean;
 import com.msr.nbmusic.bean.response.NewMusicBean;
 
 import io.reactivex.Observable;
@@ -23,4 +24,7 @@ public interface ShowApi {
 
     @GET("213-4")
     Observable<BaseResBean<NewMusicBean>> getHotMusic(@Query("topid") int topid);//获取热门榜单歌曲
+
+    @GET("213-2")
+    Observable<BaseResBean<LrcBean>> getMusicLrc(@Query("musicid") int musicid);//获取歌曲歌词
 }

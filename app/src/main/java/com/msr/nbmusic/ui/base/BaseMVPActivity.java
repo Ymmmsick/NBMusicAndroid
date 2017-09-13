@@ -17,6 +17,7 @@ import com.msr.nbmusic.mvp.IView;
 import com.michaelflisar.rxbus2.rx.RxDisposableManager;
 import com.msr.nbmusic.ui.widgets.StatusBarUtil;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
+import com.umeng.analytics.MobclickAgent;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -43,7 +44,7 @@ public abstract class BaseMVPActivity<P extends IPresenter> extends RxAppCompatA
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initActionBar();
-        setContentView(returnLayoutID());
+        setContentView();
         unbinder = ButterKnife.bind(this);
         presenter = createPresenter();
         presenter.attachView((IView) this);
@@ -70,6 +71,12 @@ public abstract class BaseMVPActivity<P extends IPresenter> extends RxAppCompatA
         back = (ImageView) actionbarLayout.findViewById(R.id.view_actionbar_back);
     }
 
+    private void setContentView() {
+        View contentView = LayoutInflater.from(this).inflate(returnLayoutID(), null);
+        contentView.setFitsSystemWindows(true);
+        setContentView(contentView);
+    }
+
     /**
      * set actionbar back icon and cilck finish
      */
@@ -83,6 +90,13 @@ public abstract class BaseMVPActivity<P extends IPresenter> extends RxAppCompatA
                 finish();
             }
         });
+    }
+
+    protected void setActionBarBackEnableAndListener(View.OnClickListener listener) {
+        if (actionBar == null)
+            throw new RuntimeException("actionbar is null,check your theme actionbar enable");
+        back.setVisibility(View.VISIBLE);
+        back.setOnClickListener(listener);
     }
 
     /**
@@ -132,5 +146,19 @@ public abstract class BaseMVPActivity<P extends IPresenter> extends RxAppCompatA
 
     public void finish() {
         super.finish();
+    }
+
+    //Umeng errors need
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+
+    //Umeng errors need
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 }

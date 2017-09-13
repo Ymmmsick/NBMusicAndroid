@@ -1,97 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:lrc="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_common"
     android:gravity="center"
     android:orientation="vertical">
 
-    <com.msr.nbmusic.ui.widgets.DiscView
-        android:id="@+id/musicplay_disc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:paddingBottom="50dp" />
+    <RelativeLayout
+        android:id="@+id/musicplay_player"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <com.msr.nbmusic.ui.widgets.font.NBTextView
-        android:id="@+id/musicplay_songname"
-        style="@style/fontsize_small"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/musicpla_disc"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
-        android:singleLine="true"
-        android:text="Song Name"
-        android:textColor="@color/text_common_black" />
+        <LinearLayout
+            android:id="@+id/musicplay_control"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="50dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-    <com.msr.nbmusic.ui.widgets.font.NBTextView
-        android:id="@+id/musicplay_singer"
-        style="@style/fontsize_spuper_small"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/musicpla_disc"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"
-        android:singleLine="true"
-        android:text="Singer"
-        android:textColor="@color/text_common" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="50dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_player_list" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:orientation="horizontal">
+            <com.msr.nbmusic.ui.widgets.PlayButton
+                android:id="@+id/musicplay_playorpause"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="50dp" />
 
-        <ImageView
-            android:id="@+id/musicplay_share"
-            android:layout_width="33dp"
-            android:layout_height="33dp"
-            android:layout_marginRight="20dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_share" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_player_next" />
+        </LinearLayout>
 
-        <ImageView
-            android:id="@+id/musicplay_download"
-            android:layout_width="33dp"
-            android:layout_height="33dp"
-            android:layout_marginRight="20dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_download" />
-
-        <ImageView
-            android:id="@+id/musicplay_ring"
-            android:layout_width="33dp"
-            android:layout_height="33dp"
-            android:padding="5dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_song_loop" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <ImageView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="50dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_player_list" />
+            android:layout_above="@+id/musicplay_control"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal">
 
-        <com.msr.nbmusic.ui.widgets.PlayButton
-            android:id="@+id/musicplay_playorpause"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="50dp" />
+            <ImageView
+                android:id="@+id/musicplay_share"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:layout_marginRight="20dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_share" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_player_next" />
-    </LinearLayout>
-</LinearLayout>
+            <ImageView
+                android:id="@+id/musicplay_download"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:layout_marginRight="20dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_download" />
+
+            <ImageView
+                android:id="@+id/musicplay_ring"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:padding="5dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_song_loop" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/musicplay_song_ll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/musicplay_control"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <com.msr.nbmusic.ui.widgets.DiscView
+                android:id="@+id/musicplay_disc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:paddingBottom="50dp" />
+
+            <com.msr.nbmusic.ui.widgets.font.NBTextView
+                android:id="@+id/musicplay_songname"
+                style="@style/fontsize_small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"
+                android:singleLine="true"
+                android:text="Song Name"
+                android:textColor="@color/text_common_black" />
+
+            <com.msr.nbmusic.ui.widgets.font.NBTextView
+                android:id="@+id/musicplay_singer"
+                style="@style/fontsize_spuper_small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="50dp"
+                android:singleLine="true"
+                android:text="Singer"
+                android:textColor="@color/text_common" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <com.msr.nbmusic.ui.widgets.lrc.LyricView
+        android:id="@+id/musicplay_lrc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        lrc:highlightColor="@color/text_common_black"
+        lrc:hintColor="@color/text_common"
+        lrc:textAlign="center"
+        lrc:textColor="@color/text_common"
+        lrc:textSize="14sp" />
+</RelativeLayout>

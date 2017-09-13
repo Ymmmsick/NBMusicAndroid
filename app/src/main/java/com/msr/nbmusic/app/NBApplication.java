@@ -6,8 +6,10 @@ import android.app.Application;
 import android.os.Bundle;
 
 import com.facebook.stetho.Stetho;
+import com.msr.nbmusic.R;
 import com.msr.nbmusic.comm.NBDBManager;
 import com.msr.nbmusic.comm.NBSPManager;
+import com.msr.nbmusic.ui.widgets.loadingandretry.LoadingAndRetryManager;
 import com.msr.nbmusic.utils.ProcessUtils;
 
 /**
@@ -28,8 +30,15 @@ public class NBApplication extends Application {
         //便面多进程重复初始化
         if (getApplicationInfo().packageName.equals(ProcessUtils.getCurProcessName(getApplicationContext()))) {
             registerActivityLifecycle();
+            initLoadingAndRetryManager();
             initOther();
         }
+    }
+
+    private void initLoadingAndRetryManager() {
+        LoadingAndRetryManager.BASE_RETRY_LAYOUT_ID = R.layout.base_retry;
+        LoadingAndRetryManager.BASE_LOADING_LAYOUT_ID = R.layout.base_loading;
+        LoadingAndRetryManager.BASE_EMPTY_LAYOUT_ID = R.layout.base_empty;
     }
 
     private void initOther() {

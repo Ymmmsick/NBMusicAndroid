@@ -36,7 +36,8 @@
         <activity android:name="com.msr.nbmusic.ui.activity.NewMusicActivity" />
         <activity
             android:name="com.msr.nbmusic.ui.activity.MusicPlayActivity"
-            android:launchMode="singleInstance" />
+            android:launchMode="singleInstance"
+            android:theme="@style/SingleInstance" />
 
         <!-- third config -->
         <meta-data

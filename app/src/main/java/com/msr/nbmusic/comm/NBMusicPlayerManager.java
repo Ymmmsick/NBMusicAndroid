@@ -13,14 +13,14 @@ import android.media.MediaPlayer.OnPreparedListener;
 import android.os.Handler;
 import android.util.Log;
 
-public class NBMusicPlayer implements OnBufferingUpdateListener, OnCompletionListener, OnPreparedListener {
+public class NBMusicPlayerManager implements OnBufferingUpdateListener, OnCompletionListener, OnPreparedListener {
 
     private static class SingletonHolder {
-        private static final NBMusicPlayer instance = new NBMusicPlayer();
+        private static final NBMusicPlayerManager instance = new NBMusicPlayerManager();
     }
 
-    public static NBMusicPlayer getInstance() {
-        return NBMusicPlayer.SingletonHolder.instance;
+    public static NBMusicPlayerManager getInstance() {
+        return NBMusicPlayerManager.SingletonHolder.instance;
     }
 
     public MediaPlayer mediaPlayer; // 媒体播放器
@@ -28,7 +28,7 @@ public class NBMusicPlayer implements OnBufferingUpdateListener, OnCompletionLis
     private PlayerProgressChangeListener progressChangeListener;
 
     // 初始化播放器
-    public NBMusicPlayer() {
+    public NBMusicPlayerManager() {
         super();
         try {
             mediaPlayer = new MediaPlayer();
@@ -64,7 +64,7 @@ public class NBMusicPlayer implements OnBufferingUpdateListener, OnCompletionLis
                 // 计算进度（获取进度条最大刻度*当前音乐播放位置 / 当前音乐时长）
                 float percent = position / (float) duration;
                 if (progressChangeListener != null) {
-                    progressChangeListener.onProgressChange(percent);
+                    progressChangeListener.onProgressChange(percent, position);
                 }
             }
         }
@@ -87,6 +87,7 @@ public class NBMusicPlayer implements OnBufferingUpdateListener, OnCompletionLis
             mediaPlayer.setOnPreparedListener(new OnPreparedListener() {
                 @Override
                 public void onPrepared(MediaPlayer mediaPlayer) {
+                    mediaPlayer.start();
                     if (progressChangeListener != null)
                         progressChangeListener.onMusicStart();
                 }
@@ -160,7 +161,7 @@ public class NBMusicPlayer implements OnBufferingUpdateListener, OnCompletionLis
     public interface PlayerProgressChangeListener {
         void onBufferingUpdate(float percent);
 
-        void onProgressChange(float percent);
+        void onProgressChange(float percent, long current);
 
         void onMusicStart();
 

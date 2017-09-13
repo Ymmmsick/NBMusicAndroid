@@ -77,7 +77,7 @@ public class PlayButton extends FrameLayout {
      * @param isPlay
      */
     public void setPlayOrPauseStatus(boolean isPlay) {
-        playOrPause.setImageResource(isPlay ? R.drawable.ic_player_play : R.drawable.ic_player_pause);
+        playOrPause.setImageResource(isPlay ? R.drawable.ic_player_pause : R.drawable.ic_player_play);
         playOrPause.setTag(isPlay);
     }
 

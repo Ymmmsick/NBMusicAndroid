@@ -38,7 +38,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initActionBar();
-        setContentView(returnLayoutID());
+        setContentView();
         unbinder = ButterKnife.bind(this);
         TODO(savedInstanceState);
     }
@@ -66,6 +66,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         back = (ImageView) actionbarLayout.findViewById(R.id.view_actionbar_back);
     }
 
+    private void setContentView() {
+        View contentView = LayoutInflater.from(this).inflate(returnLayoutID(), null);
+        contentView.setFitsSystemWindows(true);
+        setContentView(contentView);
+    }
+
     /**
      * set actionbar back icon and cilck finish
      */
@@ -79,6 +85,13 @@ public abstract class BaseActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    protected void setActionBarBackEnableAndListener(View.OnClickListener listener) {
+        if (actionBar == null)
+            throw new RuntimeException("actionbar is null,check your theme actionbar enable");
+        back.setVisibility(View.VISIBLE);
+        back.setOnClickListener(listener);
     }
 
     /**

@@ -1,7 +1,6 @@
 package com.msr.nbmusic.ui.activity;
 
 import android.os.Bundle;
-import android.widget.TextView;
 
 import com.msr.nbmusic.R;
 import com.msr.nbmusic.bean.response.EnglishBean;
