@@ -11,7 +11,6 @@ import com.msr.nbmusic.ui.adapter.MainPagerAdapter;
 import com.msr.nbmusic.ui.base.BaseMVPActivity;
 import com.msr.nbmusic.ui.fragment.MineFragment;
 import com.msr.nbmusic.ui.fragment.MusicFragment;
-import com.msr.nbmusic.ui.fragment.TestFragment;
 import com.msr.nbmusic.ui.widgets.BanSlideViewPager;
 
 import butterknife.BindView;
@@ -40,6 +39,7 @@ public class MainActivity extends BaseMVPActivity<MainPresenterImpl> implements 
         mainViewpager.setOffscreenPageLimit(fragments.length);
         mainViewpager.setAdapter(adapter);
         mainViewpager.setCurrentItem(0);
+        //presenter.scanMusic(getBaseContext());
     }
 
     @Override

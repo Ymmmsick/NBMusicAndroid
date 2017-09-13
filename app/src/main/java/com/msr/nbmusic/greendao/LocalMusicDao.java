@@ -28,9 +28,10 @@ public class LocalMusicDao extends AbstractDao<LocalMusic, Long> {
         public final static Property FileName = new Property(1, String.class, "fileName", false, "fileName");
         public final static Property FileType = new Property(2, String.class, "fileType", false, "fileType");
         public final static Property Summary = new Property(3, String.class, "summary", false, "summary");
-        public final static Property FileSize = new Property(4, String.class, "fileSize", false, "fileSzie");
+        public final static Property FileSize = new Property(4, Long.class, "fileSize", false, "fileSzie");
         public final static Property Singer = new Property(5, String.class, "singer", false, "singer");
-        public final static Property Time = new Property(6, String.class, "time", false, "time");
+        public final static Property Duration = new Property(6, int.class, "duration", false, "duration");
+        public final static Property FilePath = new Property(7, String.class, "filePath", false, "filePath");
     }
 
 
@@ -50,9 +51,10 @@ public class LocalMusicDao extends AbstractDao<LocalMusic, Long> {
                 "\"fileName\" TEXT," + // 1: fileName
                 "\"fileType\" TEXT," + // 2: fileType
                 "\"summary\" TEXT," + // 3: summary
-                "\"fileSzie\" TEXT," + // 4: fileSize
+                "\"fileSzie\" INTEGER," + // 4: fileSize
                 "\"singer\" TEXT," + // 5: singer
-                "\"time\" TEXT);"); // 6: time
+                "\"duration\" INTEGER NOT NULL ," + // 6: duration
+                "\"filePath\" TEXT);"); // 7: filePath
     }
 
     /** Drops the underlying database table. */
@@ -85,19 +87,20 @@ public class LocalMusicDao extends AbstractDao<LocalMusic, Long> {
             stmt.bindString(4, summary);
         }
  
-        String fileSize = entity.getFileSize();
+        Long fileSize = entity.getFileSize();
         if (fileSize != null) {
-            stmt.bindString(5, fileSize);
+            stmt.bindLong(5, fileSize);
         }
  
         String singer = entity.getSinger();
         if (singer != null) {
             stmt.bindString(6, singer);
         }
+        stmt.bindLong(7, entity.getDuration());
  
-        String time = entity.getTime();
-        if (time != null) {
-            stmt.bindString(7, time);
+        String filePath = entity.getFilePath();
+        if (filePath != null) {
+            stmt.bindString(8, filePath);
         }
     }
 
@@ -125,19 +128,20 @@ public class LocalMusicDao extends AbstractDao<LocalMusic, Long> {
             stmt.bindString(4, summary);
         }
  
-        String fileSize = entity.getFileSize();
+        Long fileSize = entity.getFileSize();
         if (fileSize != null) {
-            stmt.bindString(5, fileSize);
+            stmt.bindLong(5, fileSize);
         }
  
         String singer = entity.getSinger();
         if (singer != null) {
             stmt.bindString(6, singer);
         }
+        stmt.bindLong(7, entity.getDuration());
  
-        String time = entity.getTime();
-        if (time != null) {
-            stmt.bindString(7, time);
+        String filePath = entity.getFilePath();
+        if (filePath != null) {
+            stmt.bindString(8, filePath);
         }
     }
 
@@ -153,9 +157,10 @@ public class LocalMusicDao extends AbstractDao<LocalMusic, Long> {
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // fileName
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // fileType
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // summary
-            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // fileSize
+            cursor.isNull(offset + 4) ? null : cursor.getLong(offset + 4), // fileSize
             cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // singer
-            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6) // time
+            cursor.getInt(offset + 6), // duration
+            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7) // filePath
         );
         return entity;
     }
@@ -166,9 +171,10 @@ public class LocalMusicDao extends AbstractDao<LocalMusic, Long> {
         entity.setFileName(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setFileType(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
         entity.setSummary(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
-        entity.setFileSize(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
+        entity.setFileSize(cursor.isNull(offset + 4) ? null : cursor.getLong(offset + 4));
         entity.setSinger(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
-        entity.setTime(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
+        entity.setDuration(cursor.getInt(offset + 6));
+        entity.setFilePath(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
      }
     
     @Override
