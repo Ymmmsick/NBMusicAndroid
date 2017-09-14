@@ -91,4 +91,18 @@ public class LocalMusic {
     public void setFilePath(String filePath) {
         this.filePath = filePath;
     }
+
+    @Override
+    public String toString() {
+        return "LocalMusic{" +
+                "id=" + id +
+                ", fileName='" + fileName + '\'' +
+                ", fileType='" + fileType + '\'' +
+                ", summary='" + summary + '\'' +
+                ", fileSize=" + fileSize +
+                ", singer='" + singer + '\'' +
+                ", duration=" + duration +
+                ", filePath='" + filePath + '\'' +
+                '}';
+    }
 }

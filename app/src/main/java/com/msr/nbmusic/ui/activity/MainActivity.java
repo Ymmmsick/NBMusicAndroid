@@ -12,9 +12,15 @@ import com.msr.nbmusic.ui.base.BaseMVPActivity;
 import com.msr.nbmusic.ui.fragment.MineFragment;
 import com.msr.nbmusic.ui.fragment.MusicFragment;
 import com.msr.nbmusic.ui.widgets.BanSlideViewPager;
+import com.msr.nbmusic.utils.ToastUtils;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.functions.Consumer;
+
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 
 public class MainActivity extends BaseMVPActivity<MainPresenterImpl> implements MainContract.View {
 
@@ -39,7 +45,17 @@ public class MainActivity extends BaseMVPActivity<MainPresenterImpl> implements 
         mainViewpager.setOffscreenPageLimit(fragments.length);
         mainViewpager.setAdapter(adapter);
         mainViewpager.setCurrentItem(0);
-        //presenter.scanMusic(getBaseContext());
+        RxPermissions permissions = new RxPermissions(this);
+        permissions.request(READ_EXTERNAL_STORAGE).subscribe(new Consumer<Boolean>() {
+            @Override
+            public void accept(@NonNull Boolean aBoolean) throws Exception {
+                if (aBoolean)
+                    presenter.scanMusic(getBaseContext());
+                else
+                    ToastUtils.show(MainActivity.this,"请开启读取sdcard权限");
+            }
+        });
+
     }
 
     @Override

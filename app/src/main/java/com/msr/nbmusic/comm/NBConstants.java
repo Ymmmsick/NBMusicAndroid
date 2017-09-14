@@ -10,4 +10,5 @@ public interface NBConstants {
 
     String SHOWAPI_APPID = "45777";
     String SHOWAPI_SECRET_KEY = "8ee2ffb717d34d229f4178acace63000";
+    int LOCAL_MUSIC_MIN_SIZE = 1000 * 800;
 }
