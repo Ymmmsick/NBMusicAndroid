@@ -3,4 +3,5 @@
     <string name="goin_now">Going Now</string>
     <string name="data_error_repty">data error</string>
     <string name="no_lrc">No Lyrics</string>
+    <string name="scanMusic">歌曲扫描</string>
 </resources>

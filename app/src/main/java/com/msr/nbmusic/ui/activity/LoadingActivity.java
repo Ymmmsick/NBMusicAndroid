@@ -50,7 +50,7 @@ public class LoadingActivity extends BaseMVPActivity<LoadingPresenter> implement
                 .subscribe(new Consumer<Object>() {
                     @Override
                     public void accept(@NonNull Object o) throws Exception {
-                        baseStartActivity(MainActivity.class);
+                        baseStartActivity(MusicScanActivity.class);
                         finish();
                     }
                 });

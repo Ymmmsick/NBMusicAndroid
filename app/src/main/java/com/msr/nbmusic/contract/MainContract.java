@@ -1,15 +1,9 @@
 package com.msr.nbmusic.contract;
 
-import android.content.Context;
-
-import com.msr.nbmusic.bean.db.LocalMusic;
 import com.msr.nbmusic.mvp.IModel;
 import com.msr.nbmusic.mvp.IPresenter;
 import com.msr.nbmusic.mvp.IView;
 
-import java.util.List;
-
-import io.reactivex.Observable;
 
 /**
  * Created by Ymmmsick on 8/18/17.

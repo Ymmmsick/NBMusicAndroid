@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="@color/white"
+    android:orientation="vertical"
+    >
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/scan_music"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@color/bg_common"
+        android:padding="10dp"
+        android:text="@string/scanMusic"
+        android:textColor="@color/text_common_color"
+        android:textSize="16sp"
+        />
+
+</RelativeLayout>
