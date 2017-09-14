@@ -34,8 +34,6 @@ android {
     }
     greendao {
         schemaVersion 1
-        daoPackage 'com.msr.nbmusic.greendao'
-        targetGenDir 'src/main/java'
     }
 
 }
