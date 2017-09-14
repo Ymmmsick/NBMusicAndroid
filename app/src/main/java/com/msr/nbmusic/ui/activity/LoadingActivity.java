@@ -46,7 +46,7 @@ public class LoadingActivity extends BaseMVPActivity<LoadingPresenter> implement
                 }
                 e.onNext("");
             }
-        }).compose(TransformersFactory.defaultSchedulers())
+        }).compose(TransformersFactory.defaultSchedulersA(this))
                 .subscribe(new Consumer<Object>() {
                     @Override
                     public void accept(@NonNull Object o) throws Exception {

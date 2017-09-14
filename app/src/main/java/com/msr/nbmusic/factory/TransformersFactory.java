@@ -19,11 +19,24 @@ import io.reactivex.schedulers.Schedulers;
  */
 public class TransformersFactory {
 
-    public static <T> ObservableTransformer<T, T> defaultSchedulers() {
+    public static <T> ObservableTransformer<T, T> defaultSchedulersA(final LifecycleProvider lifecycleProvider) {
         return new ObservableTransformer<T, T>() {
             @Override
             public ObservableSource<T> apply(@NonNull Observable<T> upstream) {
-                return upstream.observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io());
+                return upstream.observeOn(AndroidSchedulers.mainThread())
+                        .subscribeOn(Schedulers.io())
+                        .compose(lifecycleProvider.<T>bindUntilEvent(ActivityEvent.DESTROY));
+            }
+        };
+    }
+
+    public static <T> ObservableTransformer<T, T> defaultSchedulersF(final LifecycleProvider lifecycleProvider) {
+        return new ObservableTransformer<T, T>() {
+            @Override
+            public ObservableSource<T> apply(@NonNull Observable<T> upstream) {
+                return upstream.observeOn(AndroidSchedulers.mainThread())
+                        .subscribeOn(Schedulers.io())
+                        .compose(lifecycleProvider.<T>bindUntilEvent(FragmentEvent.DESTROY));
             }
         };
     }
