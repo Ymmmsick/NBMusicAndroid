@@ -49,9 +49,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         actionBar = getSupportActionBar();
         if (actionBar == null)
             return;
-        ViewGroup rootView = (ViewGroup) getWindow().getDecorView();
-        rootView.setClipChildren(false);
-        rootView.setClipToPadding(false);
         actionBar.setElevation(0);
         actionBar.setDisplayShowTitleEnabled(false);
         actionBar.setDisplayShowCustomEnabled(true);
