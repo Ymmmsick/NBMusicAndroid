@@ -1,8 +1,9 @@
 package com.msr.nbmusic.comm;
 
 import com.msr.nbmusic.app.NBApplication;
-import com.msr.nbmusic.greendao.DaoMaster;
-import com.msr.nbmusic.greendao.DaoSession;
+import com.msr.nbmusic.bean.db.DaoMaster;
+import com.msr.nbmusic.bean.db.DaoSession;
+
 
 /**
  *

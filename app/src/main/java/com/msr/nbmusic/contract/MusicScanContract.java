@@ -12,18 +12,20 @@ import java.util.List;
 import io.reactivex.Observable;
 
 /**
- * Created by Ymmmsick on 8/18/17.
+ * Created by Simeon on 2017/9/14.
  */
 
-public interface MainContract {
-    interface Model extends IModel {
+public interface MusicScanContract {
 
+    interface Model extends IModel {
+        Observable<List<LocalMusic>> scanMusic(Context context);
     }
 
     interface View extends IView {
     }
 
     interface Presenter extends IPresenter {
-
+        void scanMusic(Context context);
     }
+
 }
